@@ -28,10 +28,11 @@ src_compile() {
 }
 
 src_install() {
-	install -D -m 0644 u2mfn/u2mfnlib.h "${D}"usr/include/u2mfnlib.h
-	install -D -m 0644 u2mfn/u2mfn-kernel.h "${D}"usr/include/u2mfn-kernel.h
-    install -D u2mfn/libu2mfn.so "${D}"usr/lib/libu2mfn.so.0
-
-    install -D -m 0644 vchan/libvchan.h "${D}"usr/include/libvchan.h
-	install -D vchan/libvchan.so "${D}"usr/lib/libvchan.so.0
+    install -D -m 0644 vchan/libvchan.h "${D}"/usr/include/libvchan.h
+    install -D -m 0644 vchan/vchan-xen.pc "${D}"/usr/lib/pkgconfig/vchan-xen.pc
+    install -D -m 0644 u2mfn/u2mfnlib.h "${D}"/usr/include/u2mfnlib.h
+    install -D -m 0644 u2mfn/u2mfn-kernel.h "${D}"usr/include/u2mfn-kernel.h
+    
+    install -D vchan/libvchan-xen.so "${D}"/usr/lib/libvchan-xen.so
+    install -D u2mfn/libu2mfn.so "${D}"/usr/lib/libu2mfn.so
 }
