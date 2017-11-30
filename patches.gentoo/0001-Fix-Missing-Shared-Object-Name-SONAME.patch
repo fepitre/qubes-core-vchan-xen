@@ -1,0 +1,39 @@
+From 31170553f189395dd3e704cf51e57e1b2f632ade Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret?= <frederic.epitre@orange.fr>
+Date: Thu, 30 Nov 2017 18:14:25 +0100
+Subject: [PATCH] Fix Missing Shared Object Name (SONAME)
+
+---
+ u2mfn/Makefile       | 2 +-
+ vchan/Makefile.linux | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/u2mfn/Makefile b/u2mfn/Makefile
+index 9f08dcc..b6e170c 100644
+--- a/u2mfn/Makefile
++++ b/u2mfn/Makefile
+@@ -24,7 +24,7 @@ CFLAGS=-g -Wall
+ all: libu2mfn.so
+ 
+ libu2mfn.so : u2mfnlib.o
+-	gcc -shared -o libu2mfn.so u2mfnlib.o
++	gcc -shared -o libu2mfn.so u2mfnlib.o -Wl,-soname,libu2mfn.so.0
+ u2mfnlib.o: u2mfnlib.c
+ 	gcc -fPIC -Wall -g -c u2mfnlib.c
+ clean:
+diff --git a/vchan/Makefile.linux b/vchan/Makefile.linux
+index 005b98b..acc5e2f 100644
+--- a/vchan/Makefile.linux
++++ b/vchan/Makefile.linux
+@@ -24,7 +24,7 @@ CFLAGS=-g -Wall -Wextra -Werror -fPIC -O2
+ all: libvchan-xen.so vchan-xen.pc
+ 
+ libvchan-xen.so : init.o io.o
+-	gcc -shared -o libvchan-xen.so $^ -lxenvchan -lxenctrl
++	gcc -shared -o libvchan-xen.so $^ -lxenvchan -lxenctrl -Wl,-soname,libvchan-xen.so.0
+ clean:
+ 	rm -f *.o *so *~ client server node node-select
+ 
+-- 
+2.13.6
+
