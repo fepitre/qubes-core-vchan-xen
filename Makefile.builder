@@ -1,5 +1,6 @@
 RPM_SPEC_FILES := rpm_spec/libvchan.spec
 ARCH_BUILD_DIRS := archlinux
+GENTOO_BUILD_DIRS := gentoo
 
 ifeq ($(PACKAGE_SET),vm)
   ifneq ($(filter $(DISTRIBUTION), debian qubuntu),)
