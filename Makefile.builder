@@ -1,6 +1,6 @@
 RPM_SPEC_FILES := rpm_spec/libvchan.spec
 ARCH_BUILD_DIRS := archlinux
-EBUILD_FILES := gentoo/qubes-core-vchan-xen.ebuild
+EBUILD_FILES := gentoo/qubes-libvchan-xen.ebuild
 
 ifeq ($(PACKAGE_SET),vm)
   ifneq ($(filter $(DISTRIBUTION), debian qubuntu),)
